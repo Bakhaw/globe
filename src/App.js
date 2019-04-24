@@ -13,10 +13,10 @@ const GlobalStyle = createGlobalStyle`
 
 export default function App() {
   return (
-    <header>
+    <>
       <Globe />
       <UpdateApp />
       <GlobalStyle />
-    </header>
+    </>
   );
 }
