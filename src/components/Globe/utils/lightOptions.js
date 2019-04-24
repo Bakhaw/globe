@@ -1,5 +1,5 @@
 export const lightOptions = {
-  pointLightColor: 'orange',
-  pointLightIntensity: 4,
-  pointLightPositionRadiusScales: [2, 1, -1]
+  pointLightColor: 'purple',
+  pointLightIntensity: 5,
+  pointLightPositionRadiusScales: [7, 3, 100]
 };

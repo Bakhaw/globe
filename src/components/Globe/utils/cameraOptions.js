@@ -1,6 +1,6 @@
 export const cameraOptions = {
-  autoRotateSpeed: 0.1,
-  distanceRadiusScale: 5,
-  maxDistanceRadiusScale: 10,
+  autoRotateSpeed: 0.07,
+  distanceRadiusScale: 3.2,
+  maxDistanceRadiusScale: 5,
   zoomSpeed: 0.3
 };
