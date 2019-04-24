@@ -2,31 +2,30 @@ import React from 'react';
 import ReactGlobe from 'react-globe';
 import styled from 'styled-components';
 
+import CityCard from '../CityCard';
+import NavigateButtons from './NavigateButtons';
 import { lightOptions, markers, markerOptions, useFocus } from './utils';
 
 const Wrapper = styled.div`
   height: 100vh;
-  width: 100vw;
-`;
-
-const Button = styled.button`
-  position: absolute;
-  left: 10px;
-  top: 10px;
+  max-width: 100vw;
 `;
 
 function Globe() {
-  const { focus, goTo } = useFocus();
+  const { focus, focusOptions, goTo } = useFocus();
 
   return (
     <Wrapper>
-      <Button onClick={() => goTo(markers[0].coordinates)}>Prague</Button>
+      <NavigateButtons goTo={goTo} />
       <ReactGlobe
-        focus={focus}
+        onClickMarker={marker => goTo(marker.city)}
+        focus={focus !== undefined ? focus.coordinates : focus}
+        focusOptions={focusOptions}
         lightOptions={lightOptions}
         markers={markers}
         markerOptions={markerOptions}
       />
+      {focus && <CityCard focus={focus} />}
     </Wrapper>
   );
 }
