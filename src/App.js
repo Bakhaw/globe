@@ -5,9 +5,16 @@ import Globe from './components/Globe';
 import UpdateApp from './components/UpdateApp';
 
 const GlobalStyle = createGlobalStyle`
-  body {
+  * {
+    font-family: 'Raleway', sans-serif;
+  }
+  body,
+  ul {
     padding: 0;
     margin: 0;
+  }
+  li {
+    list-style: none;
   }
 `;
 
