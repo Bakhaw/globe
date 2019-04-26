@@ -3,7 +3,6 @@ import { markers } from './markers';
 
 export function useFocus() {
   const [focus, setFocus] = useState(undefined);
-  const focusButtonsDataset = ['None', ...markers.map(marker => marker.city)];
 
   function goTo(city) {
     if (city === 'None') return setFocus(undefined);
@@ -12,5 +11,5 @@ export function useFocus() {
     setFocus(focus[0]);
   }
 
-  return { focus, focusButtonsDataset, goTo };
+  return { focus, goTo };
 }
