@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactGlobe from 'react-globe';
 import styled from 'styled-components';
 
-import CityCard from '../CityCard';
-import NavigateButtons from './NavigateButtons';
+import BottomMenu from '../BottomMenu';
+import RightMenu from '../RightMenu';
 import * as reactGlobeProps from './utils';
 
 const Wrapper = styled.div`
@@ -12,26 +12,32 @@ const Wrapper = styled.div`
 `;
 
 function Globe() {
+  const [showCityCard, setShowCityCard] = useState(false);
   const { focus, goTo } = reactGlobeProps.useFocus();
 
-  function onClickMarker(marker) {
-    goTo(marker.city);
+  async function handleClick({ city }) {
+    await goTo(city);
+    await setShowCityCard(true);
   }
 
-  function onDefocus() {
-    goTo('None');
+  async function onDefocus() {
+    await setShowCityCard(false);
+    await goTo('None');
   }
 
   return (
     <Wrapper>
-      <NavigateButtons goTo={goTo} />
       <ReactGlobe
         focus={focus !== undefined ? focus.coordinates : focus}
-        onClickMarker={onClickMarker}
+        onClickMarker={handleClick}
         onDefocus={onDefocus}
         {...reactGlobeProps}
       />
-      {focus && <CityCard focus={focus} />}
+      {showCityCard ? (
+        <BottomMenu card={focus} handleBackButtonClick={onDefocus} />
+      ) : (
+        <RightMenu handleClick={handleClick} />
+      )}
     </Wrapper>
   );
 }
