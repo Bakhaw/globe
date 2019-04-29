@@ -17,6 +17,10 @@ const Wrapper = styled.div`
     font-size: 48px;
     margin: 0;
   }
+  @media (max-width: 800px) {
+    left: 20px;
+    right: 20px;
+  }
 `;
 
 const BackButton = styled.img`
@@ -36,11 +40,21 @@ const Description = styled.div`
   height: 35vh;
   border-radius: 6px 6px 0 0;
   background: #fff;
+  @media (max-width: 800px) {
+    padding: 20px 20px 0 20px;
+    p {
+      margin: 0;
+    }
+  }
 `;
 
 const CardImg = styled.img`
   height: 100%;
   width: 250px;
+  @media (max-width: 800px) {
+    height: 150px;
+    width: 150px;
+  }
 `;
 
 function BottomMenu({ card, handleBackButtonClick }) {

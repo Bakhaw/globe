@@ -8,6 +8,13 @@ const GlobalStyle = createGlobalStyle`
   * {
     font-family: 'Raleway', sans-serif;
   }
+  body {
+    @media (max-width: 800px) {
+      overflow: hidden;
+      height: 100vh;
+      background: #000;
+    }
+  }
   body,
   ul {
     padding: 0;

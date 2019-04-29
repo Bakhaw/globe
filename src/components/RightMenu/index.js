@@ -14,10 +14,11 @@ const Wrapper = styled.div`
   background: transparent;
   border-radius: 4px;
   @media (max-width: 800px) {
-    left: 20px;
-    top: unset;
-    width: unset;
-    padding: 3px 15px;
+    position: unset;
+    margin: auto;
+    padding: 10px 0;
+    height: calc(100vh - 35vh); /* Globe height is 35vh */
+    width: 100vw;
   }
 `;
 
@@ -28,6 +29,9 @@ const List = styled.ul`
   height: 100%;
   width: 100%;
   overflow: hidden scroll;
+  @media (max-width: 800px) {
+    display: unset;
+  }
 `;
 
 const ListItem = styled.li`
@@ -44,15 +48,15 @@ const ListItem = styled.li`
     z-index: 1;
     position: absolute;
     bottom: 20%;
-    left: 5%;
+    left: 15%;
     font-size: 24px;
     color: #fff;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   }
   img {
     filter: contrast(0.75);
-    height: 150px;
-    width: 250px;
+    height: 120px;
+    width: 220px;
     border-radius: 6px;
   }
   &:hover {
@@ -61,22 +65,44 @@ const ListItem = styled.li`
       filter: contrast(1);
     }
   }
+  @media (max-width: 800px) {
+    flex-direction: column;
+    align-items: center;
+    margin: 12px 0;
+    img {
+      height: 160px;
+      width: 280px;
+    }
+    span {
+      bottom: calc(50% - 24px); /* 24px is top and bottom margin (12 + 12) */
+      left: unset;
+    }
+  }
 `;
 
-const RightMenu = ({ handleClick }) => {
-  const items = [...markers, ...markers];
+function RightMenu({ handleClick }) {
+  const items = [
+    ...markers,
+    ...markers,
+    ...markers,
+    ...markers,
+    ...markers,
+    ...markers,
+    ...markers,
+    ...markers
+  ];
   return (
     <Wrapper>
       <List>
         {items.map((marker, index) => (
           <ListItem key={index} onClick={() => handleClick(marker)}>
-            <span>{marker.city}</span>
             <img alt={`${marker.city} background`} src={marker.image} />
+            <span>{marker.city}</span>
           </ListItem>
         ))}
       </List>
     </Wrapper>
   );
-};
+}
 
 export default RightMenu;

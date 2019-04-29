@@ -9,6 +9,9 @@ import * as reactGlobeProps from './utils';
 const Wrapper = styled.div`
   height: 100vh;
   max-width: 100vw;
+  @media (max-width: 800px) {
+    height: 35vh;
+  }
 `;
 
 function Globe() {
